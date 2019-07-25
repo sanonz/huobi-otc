@@ -1,0 +1,48 @@
+{
+  "name": "Huobi OTC",
+  "version": "1.0.0",
+  "description": "Huobi OTC interest arbitrage.",
+  "manifest_version": 2,
+
+  "icons": {
+    "16": "assets/images/logo16.disabled.png",
+    "32": "assets/images/logo32.disabled.png",
+    "48": "assets/images/logo48.disabled.png",
+    "128": "assets/images/logo128.disabled.png"
+  },
+
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.c2c.huobi.co/*",
+    "*://otc-api.eiijo.cn/*",
+    "*://oapi.dingtalk.com/*"
+  ],
+
+  "web_accessible_resources": [
+    "assets/js/inject.js"
+  ],
+
+  "browser_action": {
+    "default_title": "Huobi OTC",
+    "default_popup": "disabled.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.c2c.huobi.co/*"
+      ],
+      "js": [
+        "assets/js/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "background": {
+    "scripts": ["assets/js/background.js"]
+  },
+
+  "homepage_url": "https://sanonz.github.com"
+}

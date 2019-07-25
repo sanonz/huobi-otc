@@ -1,0 +1,30 @@
+.button {
+  padding: 12px 20px;
+  color: #606266;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  background-color: #fff;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  &.primary {
+    color: #fff;
+    background-color: #409eff;
+    border: 1px solid #409eff;
+  }
+  &.success {
+    color: #fff;
+    background-color: #67c23a;
+    border-color: #67c23a;
+  }
+  &.danger {
+    color: #fff;
+    background-color: #f56c6c;
+    border-color: #f56c6c;
+  }
+}

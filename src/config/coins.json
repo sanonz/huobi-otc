@@ -1,0 +1,102 @@
+[
+  {
+    "coinId": 1,
+    "coinName": "BTC",
+    "minRechargeAmount": 0.001,
+    "comfirTime": 3,
+    "remote": 1,
+    "isRecharge": true,
+    "isTrade": true,
+    "isOneTrade": true,
+    "isTransfer": true,
+    "tradeTeam": "",
+    "isSimplex": true
+  },
+  {
+    "coinId": 3,
+    "coinName": "ETH",
+    "minRechargeAmount": 0.01,
+    "comfirTime": 30,
+    "remote": 2,
+    "isRecharge": true,
+    "isTrade": true,
+    "isOneTrade": true,
+    "isTransfer": true,
+    "tradeTeam": "ethbtc",
+    "isSimplex": true
+  },
+  {
+    "coinId": 2,
+    "coinName": "USDT",
+    "minRechargeAmount": 100,
+    "comfirTime": 3,
+    "remote": 1,
+    "isRecharge": true,
+    "isTrade": true,
+    "isOneTrade": true,
+    "isTransfer": true,
+    "tradeTeam": "btcusdt"
+  },
+  {
+    "coinId": 5,
+    "coinName": "EOS",
+    "minRechargeAmount": 0.1,
+    "comfirTime": 1,
+    "remote": 2,
+    "isRecharge": true,
+    "isTrade": true,
+    "isOneTrade": true,
+    "isTransfer": true,
+    "tradeTeam": "eosbtc"
+  },
+  {
+    "coinId": 7,
+    "coinName": "XRP",
+    "minRechargeAmount": 0.1,
+    "comfirTime": 1,
+    "remote": 2,
+    "isRecharge": true,
+    "isTrade": true,
+    "isOneTrade": false,
+    "isTransfer": true,
+    "tradeTeam": "xrpbtc",
+    "isSimplex": true
+  },
+  {
+    "coinId": 8,
+    "coinName": "LTC",
+    "minRechargeAmount": 0.001,
+    "comfirTime": 3,
+    "remote": 2,
+    "isRecharge": true,
+    "isTrade": true,
+    "isOneTrade": false,
+    "isTransfer": true,
+    "tradeTeam": "ltcbtc",
+    "isSimplex": true
+  },
+  {
+    "coinId": 4,
+    "coinName": "HT",
+    "minRechargeAmount": 0.5,
+    "comfirTime": 30,
+    "remote": 2,
+    "isRecharge": true,
+    "isTrade": true,
+    "isOneTrade": false,
+    "isTransfer": true,
+    "tradeTeam": "htbtc"
+  },
+  {
+    "coinId": 6,
+    "coinName": "HUSD",
+    "minRechargeAmount": 0.5,
+    "comfirTime": 30,
+    "remote": 2,
+    "isRecharge": false,
+    "isTrade": true,
+    "isOneTrade": false,
+    "isTransfer": true,
+    "tradeTeam": "btchusd"
+  }
+]

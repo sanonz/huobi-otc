@@ -1,0 +1,43 @@
+body {
+  /* Color */
+  --color-black: #000;
+  --color-white: #FFF;
+
+  /* Size */
+  --size-menubar-width: 60px;
+  --size-siderbar-width: 280px;
+  --size-properties-width: 320px;
+
+  /* Color */
+  --color-primary: #333;
+  --color-muted: #999;
+  --color-link: #707070;
+  --color-link-hover: #020202;
+
+  --color-bg: #FFF;
+  --color-fill: #F4F4F4;
+  --color-active: #F6FEFF;
+  --color-line: #D4D4D4;
+
+  --color-btn: #545454;
+  --color-btn-hover: #434343;
+}
+
+/* Indicates that the user has notified the system that they prefer a page that has a dark theme. */
+@media(prefers-color-scheme: dark) {
+  body {
+    /* Color */
+    --color-primary: #CFD8E6;
+    --color-muted: #999;
+    --color-link: #E6A75C;
+    --color-link-hover: #E8A24F;
+
+    --color-bg: #393C40;
+    --color-fill: #2E3033;
+    --color-active: #333539;
+    --color-line: #242629;
+
+    --color-btn: #9A9A9A;
+    --color-btn-hover: #AEAEAE;
+  }
+}
