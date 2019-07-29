@@ -71,26 +71,24 @@ class Content {
         case 'notify':
           const self = this;
           const orderId = otc.value.orderId;
-          if (orderId) {
-            const notify = () => {
-              const notification = this.triggerNotify(otc.value.message, otc.value.body);
-              if (notification) {
-                self.isNotifyclicked = false;
-                notification.addEventListener('close', function() {
-                  if (!self.isNotifyclicked) {
-                    setTimeout(notify, 1000);
-                  }
-                });
-                notification.addEventListener('click', function(this: Notification) {
-                  self.isNotifyclicked = true;
-                  window.focus();
-                  self.dispatchEvent('notify', orderId);
-                  this.close();
-                });
-              }
-            };
-            notify();
-          }
+          const notify = () => {
+            const notification = this.triggerNotify(otc.value.message, otc.value.body);
+            if (notification && orderId) {
+              self.isNotifyclicked = false;
+              notification.addEventListener('close', function() {
+                if (!self.isNotifyclicked) {
+                  setTimeout(notify, 1000);
+                }
+              });
+              notification.addEventListener('click', function(this: Notification) {
+                self.isNotifyclicked = true;
+                window.focus();
+                self.dispatchEvent('notify', orderId);
+                this.close();
+              });
+            }
+          };
+          notify();
           break;
 
         default:

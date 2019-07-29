@@ -178,7 +178,7 @@ class Background {
 
   getScene() {
     const page: any = this.getPopup();
-    if (page) {
+    if (page && page.popup) {
       return page.popup.scene;
     }
 
@@ -302,8 +302,8 @@ class Background {
           }
         }
       })
-      .catch(() => {
-        this.isDone = true;
+      .catch(error => {
+        this.isContinue = false;
       });
   }
 
@@ -359,8 +359,8 @@ class Background {
           this.triggerNotify(json.message);
         }
       })
-      .catch(() => {
-        this.isDone = true;
+      .catch(error => {
+        this.isContinue = false;
       });
   }
 
@@ -369,36 +369,44 @@ class Background {
       return;
     }
 
+    this.time = Date.now();
+
     // 当订单完成时才进行反向操作
     return this.request(api + 'otc/order/' + this.orderId)
       .then(response => response.json())
       .then(json => {
         if (json.success) {
-          // status = {
-          //   0: '请付款',
-          //   1: '等待卖家确认',
-          //   2: '已取消',
-          //   3: '已完成',
-          //   4: '申诉中',
-          //   5: '取消申诉',
-          // };
-          const status = json.data.order.status;
-          if (status === 2) {  // 订单取消
-            this.orderId = null;
-            console.info('订单取消，请重新开始');
-          } else if (status === 3) { // 订单者完成
+          const map = {
+            0: '请付款',
+            1: '等待卖家确认',
+            2: '已取消',
+            3: '已完成',
+            4: '申诉中',
+            5: '取消申诉',
+          };
+          const status: keyof typeof map = json.data.order.status;
+          if (status === 0 || status === 1) {
+            const duration = this.time + 1000;
+            const now = Date.now();
+            if (now >= duration) {
+              this.checkOrder();
+            } else {
+              setTimeout(this.checkOrder, duration - now);
+            }
+          } else if (status === 3) { // 已完成状态进行反向下单
             this.orderId = null;
             this.isDone = false;
             this.continue();
           } else {
-            this.checkOrder();
+            this.orderId = null;
+            this.triggerNotify({message: '提示信息', body: `订单${map[status]}，请重新开始`});
           }
         } else {
           console.error(json.message);
         }
       })
-      .catch(err => {
-        console.error(err.message);
+      .catch(error => {
+        console.error(error.message);
       });
   }
 
