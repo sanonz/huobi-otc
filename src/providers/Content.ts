@@ -59,7 +59,13 @@ class Content {
       const otc = json.otc;
       switch (otc.action) {
         case 'init':
-          const token = localStorage['otc-token'];
+          const str = localStorage['hb-otc-token'];
+          let token = null;
+          try {
+            token = JSON.parse(str).token;
+          } catch(error) {
+            token = null;
+          }
           sendResponse({
             otc: {
               action: otc.action,
